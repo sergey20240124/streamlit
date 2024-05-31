@@ -61,7 +61,7 @@ def to_excel(df):
 
 # Streamlit app
 def main():
-    st.title("Amazon Data Cleaner")
+    st.title("MARKETPRIME TA CLEANUP")
 
     uploaded_file = st.file_uploader("Choose an XLSX file", type="xlsx")
 
