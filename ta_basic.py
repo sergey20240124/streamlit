@@ -214,9 +214,9 @@ def main():
         cleaned_data_excel = to_excel(cleaned_data, review_data, portfolio_sheets)
 
         st.download_button(
-            label="Download cleaned data as XLSX",
+            label="Download XLSX file",
             data=cleaned_data_excel,
-            file_name='cleaned_data_with_review_and_portfolios.xlsx',
+            file_name='Target_Review.xlsx',
             mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
         )
 
