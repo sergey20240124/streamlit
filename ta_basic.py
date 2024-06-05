@@ -192,7 +192,7 @@ def to_excel(cleaned_data, review_data, portfolio_sheets):
 def main():
     st.title("AMAZON DATA: TARGETING REVIEW")
 
-    uploaded_file = st.file_uploader("Upload Amazon SP Targeting Report (Make sure it's pylled based on Daily time unit", type="xlsx")
+    uploaded_file = st.file_uploader("Upload Amazon SP Targeting Report (Make sure the time unit is Daily)", type="xlsx")
 
     if uploaded_file is not None:
         st.write("File uploaded successfully!")
