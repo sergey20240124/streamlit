@@ -1,5 +1,4 @@
 streamlit
 pandas
-nltk
-scipy
-openpyxl0
+openpyxl
+numpy
