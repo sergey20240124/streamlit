@@ -1,13 +1,17 @@
 # streamlit_ngram_analysis.py
 
 import streamlit as st
-import pandas as pd
-import nltk
-from nltk.corpus import stopwords
-from nltk.util import ngrams
-from collections import Counter
-from io import BytesIO
-from scipy.stats import pearsonr
+
+try:
+    import pandas as pd
+    import nltk
+    from nltk.corpus import stopwords
+    from nltk.util import ngrams
+    from collections import Counter
+    from io import BytesIO
+    from scipy.stats import pearsonr
+except ModuleNotFoundError as e:
+    st.error(f"An error occurred while importing modules: {e}")
 
 # Ensure nltk resources are downloaded
 nltk.download('punkt')
