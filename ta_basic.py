@@ -190,9 +190,9 @@ def to_excel(cleaned_data, review_data, portfolio_sheets):
 
 # Streamlit app
 def main():
-    st.title("Amazon Data Processing")
+    st.title("AMAZON DATA: TARGETING REVIEW")
 
-    uploaded_file = st.file_uploader("Choose an XLSX file", type="xlsx")
+    uploaded_file = st.file_uploader("Upload Amazon SP Targeting Report (Make sure it's pylled based on Daily time unit", type="xlsx")
 
     if uploaded_file is not None:
         st.write("File uploaded successfully!")
@@ -201,11 +201,11 @@ def main():
         review_data = create_review_sheet(cleaned_data)
         portfolio_sheets = create_portfolio_sheets(cleaned_data)
 
-        st.write("Preview of cleaned data:")
-        st.dataframe(cleaned_data.head())
+        #st.write("Preview of cleaned data:")
+        #st.dataframe(cleaned_data.head())
 
-        st.write("Preview of review data:")
-        st.dataframe(review_data.head())
+        #st.write("Preview of review data:")
+        #st.dataframe(review_data.head())
 
         for portfolio, data in portfolio_sheets.items():
             st.write(f"\nPreview of portfolio data for {portfolio}:")
