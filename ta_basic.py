@@ -22,7 +22,7 @@ def clean_amazon_data(file):
         'Total Return on Advertising Spend (ROAS)', '7 Day Total Orders (#)',
         '7 Day Conversion Rate', '7 Day Advertised SKU Units (#)',
         '7 Day Other SKU Units (#)', '7 Day Advertised SKU Sales', '7 Day Other SKU Sales',
-        'Currency', 'Ad Group Name','Total Advertising Cost of Sales (ACOS)', 'Click-Thru Rate (CTR)'
+        'Currency', 'Ad Group Name', 'Total Advertising Cost of Sales (ACOS)', 'Click-Thru Rate (CTR)'
     ]
     amazon_data.drop(columns=columns_to_remove, inplace=True)
 
@@ -80,7 +80,7 @@ def create_review_sheet(cleaned_data):
     
     return review_data
 
-# Function to create individual portfolio sheets with Ad Sales, Ad Spend, and ACOS columns
+# Updated function to create individual portfolio sheets with Ad Sales, Ad Spend, and ACOS columns
 def create_portfolio_sheets(cleaned_data):
     portfolio_sheets = {}
 
@@ -91,40 +91,37 @@ def create_portfolio_sheets(cleaned_data):
     portfolios = recent_data['Portfolio'].unique()
 
     for portfolio in portfolios:
-        portfolio_data = recent_data[recent_data['Portfolio'] == portfolio]
+        try:
+            portfolio_data = recent_data[recent_data['Portfolio'] == portfolio]
 
-        portfolio_sheet = portfolio_data.groupby(['Targeting', pd.Grouper(key='Date', freq='W-SUN')]).agg(
-            Ad_Sales=('Ad Sales', 'sum'),
-            Ad_Spend=('Ad Spend', 'sum'),
-            ACOS=('ACOS', 'mean')  # Assuming you want to average the ACOS over the week
-        ).unstack(fill_value=0)
+            portfolio_sheet = portfolio_data.groupby(['Targeting', pd.Grouper(key='Date', freq='W-SUN')]).agg(
+                Ad_Sales=('Ad Sales', 'sum'),
+                Ad_Spend=('Ad Spend', 'sum'),
+                ACOS=('ACOS', 'mean')  # Assuming you want to average the ACOS over the week
+            ).unstack(fill_value=0)
 
-        portfolio_sheet.columns = ['_'.join([col[0], col[1].strftime('%m-%d-%Y')]) for col in portfolio_sheet.columns]
+            portfolio_sheet.columns = ['_'.join([col[0], col[1].strftime('%m-%d-%Y')]) for col in portfolio_sheet.columns]
+            portfolio_sheet.reset_index(inplace=True)
 
-        portfolio_sheet.reset_index(inplace=True)
+            for date in sorted(set(col.split('_')[1] for col in portfolio_sheet.columns if '_' in col)):
+                spend_col = f'Ad_Spend_{date}'
+                sales_col = f'Ad_Sales_{date}'
+                acos_col = f'ACOS_{date}'
 
-        # Adding debug print statements
-        print(f"Columns before processing for portfolio {portfolio}: {portfolio_sheet.columns}")
+                if spend_col in portfolio_sheet.columns and sales_col in portfolio_sheet.columns:
+                    portfolio_sheet[f'Spend_{date}'] = portfolio_sheet[spend_col]
+                    portfolio_sheet[f'ACOS_{date}'] = portfolio_sheet[acos_col]
+                else:
+                    print(f"Missing column for date {date}: {spend_col} or {sales_col}")
 
-        for date in sorted(set(col.split('_')[1] for col in portfolio_sheet.columns if '_' in col)):
-            spend_col = f'Ad_Spend_{date}'
-            sales_col = f'Ad_Sales_{date}'
-            acos_col = f'ACOS_{date}'
+            columns_to_keep = ['Targeting'] + [col for col in portfolio_sheet.columns if 'Ad_Sales' in col or 'Spend' in col or 'ACOS' in col]
+            portfolio_sheet = portfolio_sheet[columns_to_keep]
 
-            # Check if columns exist before using them
-            if spend_col in portfolio_sheet.columns and sales_col in portfolio_sheet.columns:
-                portfolio_sheet[f'Spend_{date}'] = portfolio_sheet[spend_col]
-                portfolio_sheet[f'ACOS_{date}'] = portfolio_sheet[acos_col]
-            else:
-                print(f"Missing column for date {date}: {spend_col} or {sales_col}")
+            print(f"Columns after processing for portfolio {portfolio}: {portfolio_sheet.columns}")
 
-        columns_to_keep = ['Targeting'] + [col for col in portfolio_sheet.columns if 'Ad_Sales' in col or 'Spend' in col or 'ACOS' in col]
-        portfolio_sheet = portfolio_sheet[columns_to_keep]
-
-        # Print columns after processing to debug
-        print(f"Columns after processing for portfolio {portfolio}: {portfolio_sheet.columns}")
-
-        portfolio_sheets[portfolio] = portfolio_sheet
+            portfolio_sheets[portfolio] = portfolio_sheet
+        except Exception as e:
+            print(f"Error processing portfolio {portfolio}: {e}")
 
     return portfolio_sheets
 
@@ -201,15 +198,8 @@ def main():
         review_data = create_review_sheet(cleaned_data)
         portfolio_sheets = create_portfolio_sheets(cleaned_data)
 
-        #st.write("Preview of cleaned data:")
-        #st.dataframe(cleaned_data.head())
-
         st.write("Preview of review data:")
         st.dataframe(review_data.head())
-
-        #for portfolio, data in portfolio_sheets.items():
-            #st.write(f"\nPreview of portfolio data for {portfolio}:")
-            #st.dataframe(data.head())
 
         cleaned_data_excel = to_excel(cleaned_data, review_data, portfolio_sheets)
 
