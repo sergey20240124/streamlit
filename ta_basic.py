@@ -204,12 +204,12 @@ def main():
         #st.write("Preview of cleaned data:")
         #st.dataframe(cleaned_data.head())
 
-        #st.write("Preview of review data:")
-        #st.dataframe(review_data.head())
+        st.write("Preview of review data:")
+        st.dataframe(review_data.head())
 
-        for portfolio, data in portfolio_sheets.items():
-            st.write(f"\nPreview of portfolio data for {portfolio}:")
-            st.dataframe(data.head())
+        #for portfolio, data in portfolio_sheets.items():
+            #st.write(f"\nPreview of portfolio data for {portfolio}:")
+            #st.dataframe(data.head())
 
         cleaned_data_excel = to_excel(cleaned_data, review_data, portfolio_sheets)
 
