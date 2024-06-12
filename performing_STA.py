@@ -9,8 +9,8 @@ warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
 st.title("Upload Performing Search Terms V.1")
 st.write("How it works")
-st.write("This app extracts performing customer search terms and creates a bulk file to upload them' and start testing')
-st.write("Version V.1 handles Sponsored Products side')
+st.write("This app extracts performing customer search terms and creates a bulk file to upload them' and start testing")
+st.write("Version V.1 handles Sponsored Products side")
 st.write("Criteria: Units>=2, below Target ACOS")
 st.write("While processing the input bulk file the app compares extracted ST against existing keywords, drops duplicates")         
 
