@@ -1,5 +1,3 @@
-# streamlit_app.py
-
 import streamlit as st
 import pandas as pd
 from io import BytesIO
@@ -35,9 +33,13 @@ def to_excel(df):
 
 # Streamlit app
 st.title("SP Keywords to Pause")
-st.write("Script pauses all spending keywords with zero sales.")
-st.write("Input file - Amazon bulk file, timeframe - 8 weeks.")
-
+st.write("""
+This app pauses all spending keywords with zero sales.<br>
+Upon processing app creates output file ready for uploading via Ad Console.<br><br>
+Input file - Bulk Report XLSX <br>
+Required sheets - SP Campaigns<br><br>
+May require review for accuracy before uploading.
+""", unsafe_allow_html=True)
 # File uploader
 uploaded_file = st.file_uploader("Upload Amazon Bulk File", type="xlsx")
 
