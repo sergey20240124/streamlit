@@ -279,7 +279,18 @@ def to_excel(cleaned_data, review_data, portfolio_sheets, spend_tracking_data):
 
 # Streamlit app
 def main():
-    st.title("AMAZON DATA: TARGETING REVIEW")
+    st.title("Inhouse: Targeting Performance Tracker")
+    st.markdown("""
+This app generates trackers to analyse targeting performance.<br><br>
+Input file - SP Targeting Report<br>
+Time Unit - Daily<br><br>
+Content<br>
+>Spend Tracking: Targets having 25%+ increase/decline<br>
+Review: Portfolios overall performance (last 6 weeks Spend, ACOS)<br>
+Base: Cleaned report data<br>
+Separate Portfolio Sheets<br>
+
+""", unsafe_allow_html=True)
 
     uploaded_file = st.file_uploader("Upload Amazon SP Targeting Report (Make sure the time unit is Daily)", type="xlsx")
 
