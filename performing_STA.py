@@ -8,7 +8,8 @@ import io
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
 st.title("Create a Bulk File to Upload Performing Search Terms")
-st.write("What exactly this app does")
+st.write("How it works
+            test")
 
 # ACOS input
 acos_input = st.number_input("Enter target ACOS (%)", min_value=0.0, max_value=100.0, value=15.0)
