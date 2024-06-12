@@ -7,7 +7,7 @@ import io
 # Suppress the specific UserWarning from openpyxl
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
-st.title("Amazon Ad Campaign Generator")
+st.title("Create a Bulk File to Upload Extracted Performing Customer Search Terms")
 
 # ACOS input
 acos_input = st.number_input("Enter target ACOS (%)", min_value=0.0, max_value=100.0, value=15.0)
