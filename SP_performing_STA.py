@@ -8,14 +8,14 @@ import io
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
 st.title("SP Performing Search Terms")
-st.write('''
+st.write("""
 This app extracts Sponsored Products performing customer search terms.<br>
 Upon processing app creates output file ready for uploading via Ad Console.<br>
 Input file - &nbsp;Bulk Report XLSX <br>
 Required sheets - &nbsp;Portfolios, SP Campaigns, SP Search terms")<br>
 Extraction criteria - &nbsp;Units>=2, below Target ACOS")<br>
 Output file - &nbsp;Bulk XLSX
-"", unsafe_allow_html=True)
+""", unsafe_allow_html=True)
 
 
       
