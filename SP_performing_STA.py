@@ -34,7 +34,7 @@ May require review before uploading to check for branded terms, etc.
       
 
 # ACOS input
-acos_input = st.number_input("Enter target ACOS (%)", min_value=0.0, max_value=100.0, value=15.0)
+acos_input = st.number_input("Enter target ACOS (%)", min_value=0.0, max_value=100.0, value=0.0)
 acos_value = acos_input / 100  # Convert to decimal for calculations
 
 # File uploader
