@@ -7,12 +7,18 @@ import io
 # Suppress the specific UserWarning from openpyxl
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
-st.title("Upload Performing Search Terms V.1")
-st.write("How it works")
-st.write("This app extracts performing customer search terms and creates a bulk file to upload them' and start testing")
-st.write("Version V.1 handles Sponsored Products side")
-st.write("Criteria: Units>=2, below Target ACOS")
-st.write("While processing the input bulk file the app compares extracted ST against existing keywords, drops duplicates")         
+st.title("SP Performing Search Terms")
+st.write('''
+This app extracts Sponsored Products performing customer search terms.<br>
+Upon processing app creates output file ready for uploading via Ad Console.<br>
+Input file - &nbsp;Bulk Report XLSX <br>
+Required sheets - &nbsp;Portfolios, SP Campaigns, SP Search terms")<br>
+Extraction criteria - &nbsp;Units>=2, below Target ACOS")<br>
+Output file - &nbsp;Bulk XLSX
+"", unsafe_allow_html=True)
+
+
+      
 
 # ACOS input
 acos_input = st.number_input("Enter target ACOS (%)", min_value=0.0, max_value=100.0, value=15.0)
