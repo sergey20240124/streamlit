@@ -8,7 +8,7 @@ import io
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
 
 st.title("SP Performing Search Terms")
-st.write("""
+st.markdown("""
 This app extracts Sponsored Products performing customer search terms.<br>
 Upon processing app creates output file ready for uploading via Ad Console.<br><br>
 Input file - Bulk Report XLSX <br>
@@ -16,11 +16,11 @@ Required sheets - Portfolios, SP Campaigns, SP Search terms.<br>
 Extraction criteria - Units>=2, below Target ACOS.<br><br>
 Output file - &nbsp;Bulk XLSX<br>
 Rules/Naming/Sources<br>
-      Portfolio ID - Taken from  performing SKU campaign<br>
-      Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date<br>                                              
-      SKU - Portfolio best performing SKU aligned<br>
-      Campaign budget - Portfolio average<br>
-      Bids - Search terms average CPC<br><br>
+>Portfolio ID - Taken from  performing SKU campaign<br>
+Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date<br>                                              
+SKU - Portfolio best performing SKU aligned<br>
+Campaign budget - Portfolio average<br>
+Bids - Search terms average CPC<br><br>
 
 Cleaning/preparation<br>
       Existing keywords - Filtered out<br>
