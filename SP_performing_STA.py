@@ -17,15 +17,15 @@ Extraction criteria - Units>=2, below Target ACOS.<br><br>
 Output file - &nbsp;Bulk XLSX<br>
 Rules/Naming/Sources<br>
 >Portfolio ID - Taken from  performing SKU campaign<br>
-Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date<br>                                              
+Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date <br>                                          
 SKU - Portfolio best performing SKU aligned<br>
 Campaign budget - Portfolio average<br>
 Bids - Search terms average CPC<br><br>
 
 Cleaning/preparation<br>
-      Existing keywords - Filtered out<br>
-      ASIN targets - Filltered out<br>
-      Duplicates in one campaign - Filltered out<br><br>
+>Existing keywords - Filtered out<br>
+ASIN targets - Filltered out<br>
+Duplicates in one campaign - Filltered out<br><br>
 
 May require review before uploading to check for branded terms, etc. 
 """, unsafe_allow_html=True)
