@@ -17,7 +17,7 @@ Extraction criteria - Units>=2, below Target ACOS.<br><br>
 Output file - &nbsp;Bulk XLSX<br>
 Rules/Naming/Sources<br>
 >Portfolio ID - Taken from  performing SKU campaign<br>
-Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date <br>                                          
+Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date                                          
 SKU - Portfolio best performing SKU aligned<br>
 Campaign budget - Portfolio average<br>
 Bids - Search terms average CPC<br><br>
