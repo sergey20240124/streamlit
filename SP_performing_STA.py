@@ -11,21 +11,21 @@ st.title("SP Performing Search Terms")
 st.write("""
 This app extracts Sponsored Products performing customer search terms.<br>
 Upon processing app creates output file ready for uploading via Ad Console.<br><br>
-Input file - &nbsp;Bulk Report XLSX <br>
-Required sheets - &nbsp;Portfolios, SP Campaigns, SP Search terms.<br>
-Extraction criteria - &nbsp;Units>=2, below Target ACOS.<br><br>
+Input file - Bulk Report XLSX <br>
+Required sheets - Portfolios, SP Campaigns, SP Search terms.<br>
+Extraction criteria - Units>=2, below Target ACOS.<br><br>
 Output file - &nbsp;Bulk XLSX<br>
-Rules/Naming/Sources
-&nbsp;Portfolio ID - Taken from  performing SKU campaign<br>
-&nbsp;Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date<br>                                              
-&nbsp;SKU - Portfolio best performing SKU aligned<br>
-&nbsp;Campaign budget - Portfolio average<br>
-&nbsp;Bids - Search terms average CPC<br><br>
+Rules/Naming/Sources<br>
+      Portfolio ID - Taken from  performing SKU campaign<br>
+      Campaign - Portfolio name |  SP | SKU |  EXACT | STA | Current date<br>                                              
+      SKU - Portfolio best performing SKU aligned<br>
+      Campaign budget - Portfolio average<br>
+      Bids - Search terms average CPC<br><br>
 
 Cleaning/preparation<br>
-&nbsp;Existing keywords - Filtered out<br>
-&nbsp;ASIN targets - Filltered out<br>
-&nbsp;Duplicates in one campaign - Filltered out<br><br>
+      Existing keywords - Filtered out<br>
+      ASIN targets - Filltered out<br>
+      Duplicates in one campaign - Filltered out<br><br>
 
 May require review before uploading to check for branded terms, etc. 
 """, unsafe_allow_html=True)
