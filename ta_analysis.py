@@ -268,7 +268,7 @@ def to_excel(cleaned_data, review_data, portfolio_sheets, spend_tracking_data):
 
 # Streamlit app
 def main():
-    st.title("Keywords Performance Tracker")
+    st.title("Keyword Performance Tracker")
     st.markdown("""
 This app generates trackers to analyze targeting performance.<br><br>
 Input file - SP Targeting Report<br>
