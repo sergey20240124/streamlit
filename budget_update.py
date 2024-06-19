@@ -55,7 +55,8 @@ def process_data(file):
         return pd.DataFrame()  # Return an empty DataFrame on error
 
 # Streamlit app
-st.title("Budget Review")
+st.title("SP Campaigns Budget Update")
+st.write("Make sure you upload a 14-day Bulk File")
 
 # File uploader
 uploaded_file = st.file_uploader("Choose a Bulk file", type="xlsx")
@@ -77,7 +78,7 @@ if uploaded_file is not None:
 
         processed_data = to_excel(selected_sp_df)
 
-        st.download_button(label="Download Processed Data as Excel",
+        st.download_button(label="Download Bulk File",
                            data=processed_data,
                            file_name='Campaign Bydgets Updated.xlsx',
                            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
