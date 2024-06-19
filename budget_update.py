@@ -82,4 +82,4 @@ if uploaded_file is not None:
                            file_name='Campaign Bydgets Updated.xlsx',
                            mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
     else:
-        st.error("No data to display. Please check the input file and try again.")
+        st.write("No campaigns to update")
